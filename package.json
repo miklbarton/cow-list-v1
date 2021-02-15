@@ -1,0 +1,36 @@
+{
+  "name": "cow-list-v1",
+  "version": "1.0.0",
+  "description": "rfp-51-cow-list",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js",
+    "test": "live-server"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "mysql": "^2.18.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miklbarton/cow-list-v1.git"
+  },
+  "author": "Mikl Barton",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/miklbarton/cow-list-v1/issues"
+  },
+  "homepage": "https://github.com/miklbarton/cow-list-v1#readme"
+}
