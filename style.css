@@ -1,16 +1,144 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: lemonchiffon;
-  color:lightcoral;
-}
-
-#app {
-  width: 50%;
-  margin: auto;
-  text-align: center;
+  color:rebeccapurple;
 }
 
 ul {
-  padding-left: 0px;
+  margin-left: 0px;
+  padding: 0;
+  list-style: none;
+  font-size: 30px;
 }
+
+h1 {
+  color:lightseagreen;
+  margin: 0 0 0 10%;
+  font-size: 60px;
+}
+
+h2 {
+  margin: 10px 0 0 10%;
+  color:palevioletred;
+}
+
+h3 {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.profile-title, .profile-name, .profile-desc {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.profile-title {
+  font-size: 50px;
+}
+
+.profile-name {
+  margin: 20px 0 0 0;
+  text-decoration: none;
+  color:palevioletred;
+  margin-top: 40px;
+}
+
+.profile-desc {
+  margin-top: 20px;
+  color:palevioletred;
+}
+
+h6 {
+  margin: 15px 0 5px 0;
+}
+
+/* split screen */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+/* left side */
+.cow-list {
+  left: 0;
+  background-color:gainsboro;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-float {
+  background-color:peachpuff;
+  width: 350px;
+  padding: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* add cow fields and submit button */
+.add-to-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10%;
+}
+
+.cow-name, .cow-desc {
+  border: none;
+  background-color: orange;
+  width: 200px;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.cow-desc {
+  margin-top: 6px;
+  height: 40px;
+}
+
+.submit-cow {
+  color:whitesmoke;
+  margin-top: 20px;
+  background-color:rebeccapurple;
+}
+
+.list-o-cows {
+  width: 280px;
+}
+
+/* cow profile */
+/* right side of page */
+.cow-profile {
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-profile {
+  width: 350px;
+  padding: 10px;
+  text-overflow: ellipsis;
+  white-space:pre-wrap;
+  word-break: keep-all;
+  overflow: hidden;
+}
+
+.profile-pic {
+  object-fit: fill;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
+
 
