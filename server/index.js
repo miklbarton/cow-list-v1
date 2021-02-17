@@ -4,11 +4,17 @@ const port = 3000;
 const db = require('../db/index.js');
 const path = require('path');
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', ['http://127.0.0.1:8080']);
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', ['http://127.0.0.1:8080']);
+//   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
+
+app.use(express.static(path.join(__dirname, '../')));
+
+app.get('/', (req, res) => {
+  res.sendFile('/index.html');
 });
 
 app.get('/api/cows', (req, res) => {

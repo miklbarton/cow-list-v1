@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "rfp-51-cow-list",
   "main": "index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "react-dev": "webpack --watch",
     "start": "nodemon ./server/index.js",
-    "test": "live-server"
+    "test": "live-server ./public"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "core-js": "^3.8.3",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "mariadb": "^2.5.3",
     "mysql": "^2.18.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"

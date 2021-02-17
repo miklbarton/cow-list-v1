@@ -1,6 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import List from './List.jsx';
+import axios from 'axios';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 class AddToList extends React.Component {
   constructor(props) {
@@ -15,8 +18,22 @@ class AddToList extends React.Component {
   }
 
   componentDidMount () {
-    $.get('http://localhost:3000/api/cows', (data, status) => {
-      this.setState({cow_name: '', cow_desc: '', cow_list: data})
+
+    // JQUERY AJAX GET, SETSTATE IN CALLBACK
+    // $.get('http://localhost:3000/api/cows', (data, status) => {
+    //   this.setState({cow_name: '', cow_desc: '', cow_list: data})
+    // })
+
+    // AXIOS GET, THEN SETSTATE
+    axios.get('http://localhost:3000/api/cows')
+    .then((response) => {
+      this.setState({cow_name: '', cow_desc: '', cow_list: response.data});
+    })
+    .catch ((err) => {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
     })
   }
 
@@ -31,11 +48,35 @@ class AddToList extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    $.post(`http://localhost:3000/api/cows?cow_name=${this.state.cow_name}&cow_desc=${this.state.cow_desc}`, () => {
-      $.get('http://localhost:3000/api/cows', (data, status) => {
-        this.setState({cow_name: '', cow_desc: '', cow_list: data});
-      })
-    });
+
+    // ASYNC, AWAIT FOR AXIOS POST, AWAIT FOR AXIOS GET, THEN SETSTATE
+    (async () => {
+      try {
+        const post = await axios.post(`http://localhost:3000/api/cows?cow_name=${this.state.cow_name}&cow_desc=${this.state.cow_desc}`);
+        const get = await axios.get('http://localhost:3000/api/cows');
+        this.setState({cow_name: '', cow_desc: '', cow_list: get.data});
+      } catch (error) {
+        console.log(error);
+        throw err;
+      }
+    })();
+
+    // AXIOS POST, THEN GET, THEN SET STATE
+    // axios.post(`http://localhost:3000/api/cows?cow_name=${this.state.cow_name}&cow_desc=${this.state.cow_desc}`)
+    // .then((response) => {
+    //   axios.get('http://localhost:3000/api/cows')
+    //   .then((response) => {
+    //     this.setState({cow_name: '', cow_desc: '', cow_list: response.data});
+    //   });
+    // })
+
+    // JQUERY AJAX POST, GET IN CALLBACK OF POST, SETSTATE IN CALLBACK OF GET
+    // $.post(`http://localhost:3000/api/cows?cow_name=${this.state.cow_name}&cow_desc=${this.state.cow_desc}`, () => {
+    //   $.get('http://localhost:3000/api/cows', (data, status) => {
+    //     this.setState({cow_name: '', cow_desc: '', cow_list: data});
+    //   })
+    // });
+
   }
 
   render() {
@@ -56,11 +97,6 @@ class AddToList extends React.Component {
       </div>
     )
   }
-
-
-
-
-
 
 };
 
